@@ -12,10 +12,12 @@ class UserProfile(models.Model):
     website = models.URLField(blank=True)
     picture = models.ImageField(upload_to='profile_images', blank=True)
 
+    def __unicode__(self):
+        return self.user.username
 
 class Post(models.Model):
     id = models.IntegerField(unique = True, primary_key=True)
-    category = models.CharField(max_length = 64)
+    category = models.CharField(max_length = 64, default='')
     content = models.CharField(max_length = 256)
     likes = models.IntegerField(default =0)
     dislikes = models.IntegerField(default = 0)
@@ -23,3 +25,5 @@ class Post(models.Model):
     lastActive = models.DateTimeField()
     poster_id = models.ForeignKey(UserProfile, unique = True)
 
+    def __unicode__(self):
+        return self.id

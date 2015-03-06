@@ -14,7 +14,6 @@ def populate():
 
 
 
-
 def add_user(user, password):
     u = UserProfile.objects.get_or_create(user=user, password=password)[0]
     u.save()

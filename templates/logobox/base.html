@@ -8,15 +8,14 @@
     <body>
         <div>
             <h1>logoBox  </h1>
-
+            <a href="{% url 'post' %}">Create a Post</a>
             <button onclick = "location.href= '{% url 'auth_login' %}'">
                 <!--"{% url 'auth_login' %}"-->
         <!--<span class="glyphicon glyphicon-thumbs-up"></span>-->
         Login
         </button>
 
-            <button id="login" class="btn btn-primary" type="button">
-        <span class="glyphicon glyphicon-thumbs-up"></span>
+            <button id="login" class="btn btn-primary" type="button" >
         Post
         </button>
         </div>

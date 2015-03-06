@@ -1,7 +1,8 @@
 from django.shortcuts import render
 from django.contrib.auth import authenticate, login
 from django.http import HttpResponseRedirect, HttpResponse
-
+from logoBox.forms import PostForm
+import time
 
 def index(request):
     context_dict = {'boldmessage': "I am bold font from the context"}
@@ -35,7 +36,7 @@ def user_login(request):
                 return HttpResponseRedirect('/logoBox/')
             else:
                 # An inactive account was used - no logging in!
-                return HttpResponse("Your logoBox account is disabled. You swine")
+                return HttpResponse("Your logoBox account is disabled. You swine.")
         else:
             # Bad login details were provided. So we can't log the user in.
             print "Invalid login details: {0}, {1}".format(username, password)
@@ -47,3 +48,25 @@ def user_login(request):
         # No context variables to pass to the template system, hence the
         # blank dictionary object...
         return render(request, 'logoBox/login.html', {})
+
+def create_post(request):
+    if request.method == 'POST':
+        form = PostForm(request.POST)
+
+        if form.is_valid():
+            form.timeCreated =time.localtime()
+            form.lastActive=time.localtime()
+
+            form.save(commit=True)
+            print "here"
+            return render(request,'logoBox/index.html')
+
+        else:
+            print "THERE BE ERRORS"
+            print form.errors
+
+    else:
+        print "Actually here"
+        form = PostForm()
+
+    return render(request, 'logoBox/post.html',{'form':form})
