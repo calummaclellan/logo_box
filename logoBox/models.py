@@ -16,14 +16,16 @@ class UserProfile(models.Model):
         return self.user.username
 
 class Post(models.Model):
-    id = models.IntegerField(unique = True, primary_key=True)
-    category = models.CharField(max_length = 64, default='')
+   # id = models.IntegerField(unique = True, primary_key=True)
+    poster_id= models.CharField(max_length = 64,default='1')
+    category = models.CharField(max_length = 64, default='cat')
     content = models.CharField(max_length = 256)
     likes = models.IntegerField(default =0)
     dislikes = models.IntegerField(default = 0)
-    timeCreated = models.DateTimeField()
-    lastActive = models.DateTimeField()
-    poster_id = models.ForeignKey(UserProfile, unique = True)
+    timeCreated = models.DateTimeField(default = datetime.date.today())
+    lastActive = models.DateTimeField(default = datetime.date.today())
+    #poster_id= models.CharField(max_length = 64)
+    #poster_id = models.ForeignKey(UserProfile)
 
     def __unicode__(self):
-        return self.id
+        return self.poster_id

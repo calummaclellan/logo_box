@@ -9,13 +9,10 @@ class MyRegistrationView(RegistrationView):
 
 
 urlpatterns = patterns('',
-    # Examples:
-    # url(r'^$', 'logo_box.views.home', name='home'),
-    # url(r'^blog/', include('blog.urls')),
 
     url(r'^admin/', include(admin.site.urls)),
     url(r'^logoBox/', include('logoBox.urls')),
-    url(r'^accounts/', include('registration.backends.simple.urls')),
+   # url(r'^accounts/', include('registration.backends.simple.urls')),
     url(r'^accounts/register/$', MyRegistrationView.as_view(), name='registration_register'),
     (r'^accounts/', include('registration.backends.simple.urls')),
 )

@@ -14,14 +14,15 @@ class UserForm(forms.ModelForm):
 class PostForm(forms.ModelForm):
 
     #id = forms.IntegerField(widget=forms.HiddenInput())
-    #category = forms.CharField(widget=forms.HiddenInput() ,max_length = 64,)
+    category = forms.CharField(max_length = 64, initial ='cat')
     content = forms.CharField(max_length = 256, help_text="Add Content here:")
-    #likes = forms.IntegerField(widget=forms.HiddenInput(),initial=0)
-    #dislikes = forms.IntegerField(widget=forms.HiddenInput(), initial=0)
-    timeCreated = forms.DateTimeField(widget=forms.HiddenInput())
-    lastActive = forms.DateTimeField(widget=forms.HiddenInput())
-    #poster_id = forms.ForeignKey(UserProfile, widget=forms.HiddenInput(),unique = True)
+    likes = forms.IntegerField(widget=forms.HiddenInput(),initial=12)
+    dislikes = forms.IntegerField(widget=forms.HiddenInput(),initial=0)
+    #timeCreated = forms.DateTimeField(widget=forms.HiddenInput())
+    #lastActive = forms.DateTimeField(widget=forms.HiddenInput())
+    poster_id= forms.CharField(widget=forms.HiddenInput(),max_length = 64, initial ='anonymous')
 
     class Meta:
         model = Post
-        fields = ['content','timeCreated','lastActive']
+        #exclude = ('category','likes','dislikes','timeCreated','lastActive','poster_id')
+        fields = ['content',]#,'timeCreated','lastActive']

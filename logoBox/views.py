@@ -50,15 +50,23 @@ def user_login(request):
         return render(request, 'logoBox/login.html', {})
 
 def create_post(request):
+
     if request.method == 'POST':
+        print "here dsaf"
+
         form = PostForm(request.POST)
+        user = request.user
+
+        #check user authenticate request user
+        poster = user.username
+        print poster
 
         if form.is_valid():
-            form.timeCreated =time.localtime()
-            form.lastActive=time.localtime()
-
+            print "here 2"
+            form.poster_id = poster
+            print poster
             form.save(commit=True)
-            print "here"
+            print  "LOOK AT ME "
             return render(request,'logoBox/index.html')
 
         else:

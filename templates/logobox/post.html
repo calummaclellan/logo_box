@@ -9,7 +9,7 @@
 
     Anything!!!
     <h3>Post</h3>
-    <form id="post_form" method ="post" action = "/logoBox/post">
+    <form id="post_form" method ="POST" action = "/logoBox/post/">
             {% csrf_token %}
             {% for hidden in form.hidden_fields %}
                 {{ hidden }}
@@ -17,11 +17,10 @@
 
             {% for field in form.visible_fields %}
                 {{ field.errors }}
-                {{ field.help_text }}
                 {{ field }}
             {% endfor %}
         <!--<input type="text" name="content">-->
-        <input id="login" class="btn btn-primary" type="submit" value="Post">
+        <input class="btn btn-primary" type="submit" value="Post">
 
     </form >
 
