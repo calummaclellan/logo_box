@@ -64,7 +64,9 @@ def create_post(request):
         if form.is_valid():
             print "here 2"
             form.poster_id = poster
+            print form.poster_id
             print poster
+
             form.save(commit=True)
             print  "LOOK AT ME "
             return render(request,'logoBox/index.html')
