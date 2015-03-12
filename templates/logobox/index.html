@@ -3,5 +3,14 @@
 {% load staticfiles %}
 
 {% block body_block %}
-    Something here
+    {% if posts %}
+
+        {%  for post in posts %}
+            <div>{{ post.content }} </div>
+        {% endfor %}
+
+    {% endif %}
+    <br>
+    Show all of the posts!
+
 {% endblock %}

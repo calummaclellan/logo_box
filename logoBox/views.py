@@ -1,11 +1,13 @@
 from django.shortcuts import render
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
 from django.http import HttpResponseRedirect, HttpResponse
 from logoBox.forms import PostForm
+from logoBox.models import Post
 import time
 
 def index(request):
-    context_dict = {'boldmessage': "I am bold font from the context"}
+    posts = Post.objects.all()
+    context_dict = {'posts': posts}
     return render(request, 'logoBox/index.html',context_dict)
 
 def user_login(request):
@@ -49,18 +51,23 @@ def user_login(request):
         # blank dictionary object...
         return render(request, 'logoBox/login.html', {})
 
+
+
+def user_logout(request):
+
+    logout(request)
+
+    return render(request,'logoBox/index.html')
+
 def create_post(request):
 
     if request.method == 'POST':
 
-
         form = PostForm(request.POST)
-        user = request.user
+        #user = request.user
 
         #check user authenticate request user
-        poster = user.username
-        print poster
-
+        poster = request.user.username
         if form.is_valid():
 
             post = form.save(commit=False)
