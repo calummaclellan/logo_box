@@ -8,6 +8,8 @@
     <body>
         <div>
             <h1>logoBox  </h1>
+            User: <strong>{{ user.username }}</strong>
+            <br>
             <a href="{% url 'post' %}">Create a Post</a>
             <button onclick = "location.href= '{% url 'auth_login' %}'">
                 <!--"{% url 'auth_login' %}"-->

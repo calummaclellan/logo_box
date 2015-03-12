@@ -52,7 +52,7 @@ def user_login(request):
 def create_post(request):
 
     if request.method == 'POST':
-        print "here dsaf"
+
 
         form = PostForm(request.POST)
         user = request.user
@@ -62,13 +62,11 @@ def create_post(request):
         print poster
 
         if form.is_valid():
-            print "here 2"
-            form.poster_id = poster
-            print form.poster_id
-            print poster
 
-            form.save(commit=True)
-            print  "LOOK AT ME "
+            post = form.save(commit=False)
+            post.poster_id = poster
+
+            post.save()
             return render(request,'logoBox/index.html')
 
         else:
@@ -76,7 +74,6 @@ def create_post(request):
             print form.errors
 
     else:
-        print "Actually here"
         form = PostForm()
 
     return render(request, 'logoBox/post.html',{'form':form})
