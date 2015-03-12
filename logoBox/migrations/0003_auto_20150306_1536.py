@@ -15,6 +15,5 @@ class Migration(migrations.Migration):
             model_name='post',
             name='category',
             field=models.CharField(default=b'', max_length=64),
-            preserve_default=True,
         ),
     ]

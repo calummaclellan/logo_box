@@ -15,6 +15,5 @@ class Migration(migrations.Migration):
             model_name='post',
             name='poster_id',
             field=models.ForeignKey(to='logoBox.UserProfile', unique=True),
-            preserve_default=True,
         ),
     ]
