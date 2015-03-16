@@ -1,6 +1,10 @@
 <!DOCTYPE html>
+
+
+
 <html>
     <head lang="en">
+
         <meta charset="UTF-8">
         <title>logoBox</title>
     </head>
@@ -29,7 +33,8 @@
 
         {% endblock %}
         </div>
-
-
+    {% load staticfiles %}
+    <script src="{% static "js/jquery-1.11.2.js" %}"></script>
+    <script src="{% static "js/logoBox-ajax.js" %}"></script>
     </body>
 </html>

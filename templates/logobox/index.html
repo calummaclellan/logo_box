@@ -2,15 +2,21 @@
 
 {% load staticfiles %}
 
+
 {% block body_block %}
     {% if posts %}
 
         {%  for post in posts %}
-            <div>{{ post.content }} </div>
+            <div style="border:1px solid; width:20%; height:125px;float:left;margin:5px">{{ post.content }}
+            <strong id="{{ post.id }}" class="count">{{ post.likes }}</strong>
+               {% if user.is_authenticated %}
+                    <button id="likes" data-postid="{{post.id}}" class="btn btn-primary" type="button">
+                    Like</button>
+                    <button onclick = "location.href= '{% url 'logout' %}'"> Dislike  </button>
+               {% endif %}
+            </div>
         {% endfor %}
 
     {% endif %}
-    <br>
-    Show all of the posts!
 
 {% endblock %}

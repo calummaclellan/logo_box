@@ -57,7 +57,8 @@ def user_logout(request):
 
     logout(request)
 
-    return render(request,'logoBox/index.html')
+    return HttpResponseRedirect('/logoBox/')
+
 
 def create_post(request):
 
@@ -74,7 +75,7 @@ def create_post(request):
             post.poster_id = poster
 
             post.save()
-            return render(request,'logoBox/index.html')
+            return HttpResponseRedirect('/logoBox/')
 
         else:
             print "THERE BE ERRORS"
@@ -84,3 +85,22 @@ def create_post(request):
         form = PostForm()
 
     return render(request, 'logoBox/post.html',{'form':form})
+
+
+def like_post(request):
+    print "herers"
+    post_id = None
+    if request.method == 'GET':
+        post_id = request.GET['post_id']
+
+    print post_id
+    likes = 0
+    if post_id:
+        post = Post.objects.get(id=int(post_id))
+        if post:
+            likes = post.likes+1
+            post.likes = likes
+            print likes
+            post.save()
+
+    return HttpResponse(likes)
