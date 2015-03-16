@@ -4,12 +4,12 @@
 
 $(document).ready(function(){
 
-    $('#likes').click(function(){
+    $('.like').click(function(){
         var postid;
         postid = $(this).attr("data-postid");
         $.get('/logoBox/like_post/',{post_id: postid}, function(data){
-            $($('strong[class="count"]').attr('id', postid)).html(data);
-            $(postid).attr("disabled", true);
+            $($('strong[id="' + postid + '"]')).html(data);
+            $($('button[id="' + postid + '"]')).attr("disabled", true);
         });
     });
 
