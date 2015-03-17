@@ -6,10 +6,20 @@ $(document).ready(function(){
 
     $('.like').click(function(){
         var postid;
-        postid = $(this).attr("data-postid");
+        var btn = $(this);
+        postid = btn.attr("data-postid");
         $.get('/logoBox/like_post/',{post_id: postid}, function(data){
-            $($('strong[id="' + postid + '"]')).html(data);
-            $($('button[id="' + postid + '"]')).attr("disabled", true);
+            btn.prev().html(data);
+            btn.attr("disabled", true);
+        });
+    });
+    $('.dislike').click(function(){
+        var postid;
+        var btn = $(this);
+        postid = $(this).attr("data-postid");
+        $.get('/logoBox/dislike_post/',{post_id: postid}, function(data){
+            btn.prev().html(data);
+            btn.attr("disabled", true);
         });
     });
 

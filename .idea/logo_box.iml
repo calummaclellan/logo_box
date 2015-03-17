@@ -10,11 +10,11 @@
     </facet>
   </component>
   <component name="NewModuleRootManager">
-    <content url="file://$MODULE_DIR$" />
     <content url="file://H:/tango_env/Lib/site-packages">
       <sourceFolder url="file://H:/tango_env/Lib/site-packages" isTestSource="false" />
     </content>
-    <orderEntry type="inheritedJdk" />
+    <content url="file://$MODULE_DIR$" />
+    <orderEntry type="jdk" jdkName="Python 2.7.5 virtualenv at H:\tangodjango" jdkType="Python SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
   </component>
   <component name="TemplatesService">

@@ -7,13 +7,16 @@
     {% if posts %}
 
         {%  for post in posts %}
-            <div style="border:1px solid; width:20%; height:125px;float:left;margin:5px">{{ post.content }}
-            <strong id="{{ post.id }}" class="count">{{ post.likes }}</strong>
+            <div style="border:1px solid; width:20%;float:left;margin:5px">{{ post.content }}
+            <strong id="{{ post.id }}_likes" class="count">{{ post.likes }}</strong>
                {% if user.is_authenticated %}
-                    <button id="{{post.id}}" data-postid="{{post.id}}" class="like" type="button">
+                    <button id="{{post.id}}_likebutton" data-postid="{{post.id}}" class="like" type="button">
                     Like</button>
-                    <button onclick = "location.href= '{% url 'logout' %}'"> Dislike  </button>
                {% endif %}
+            <strong id="{{ post.id }}_dislikes" class="count">{{ post.dislikes }}</strong>
+            {% if user.is_authenticated %}
+            <button id="{{post.id}}" data-postid="{{post.id}}" class="dislike" type="button">Dislike</button>
+            {% endif %}
             </div>
         {% endfor %}
 

@@ -88,7 +88,7 @@ def create_post(request):
 
 
 def like_post(request):
-    print "herers"
+
     post_id = None
     if request.method == 'GET':
         post_id = request.GET['post_id']
@@ -104,3 +104,20 @@ def like_post(request):
             post.save()
 
     return HttpResponse(likes)
+
+def dislike_post(request):
+    post_id = None
+    if request.method == 'GET':
+        post_id = request.GET['post_id']
+
+    print post_id
+    dislikes = 0
+    if post_id:
+        post = Post.objects.get(id=int(post_id))
+        if post:
+            dislikes = post.dislikes+1
+            post.dislikes = dislikes
+            print dislikes
+            post.save()
+
+    return HttpResponse(dislikes)
