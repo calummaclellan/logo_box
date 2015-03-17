@@ -16,7 +16,6 @@ class UserProfile(models.Model):
         return self.user.username
 
 class Post(models.Model):
-   # id = models.IntegerField(unique = True, primary_key=True)
     poster_id= models.CharField(max_length = 64,default='1')
     category = models.CharField(max_length = 64, default='cat')
     content = models.CharField(max_length = 256)
@@ -29,3 +28,10 @@ class Post(models.Model):
 
     def __unicode__(self):
         return self.poster_id
+
+class Rating(models.Model):
+    post_id_rate = models.ForeignKey('Post', default="")
+    poster_id_rate = models.ForeignKey('UserProfile', default="")
+
+    def __unicode__(self):
+        return self.post_id_rate

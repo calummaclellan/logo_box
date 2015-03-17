@@ -20,7 +20,7 @@ def add_user(user, password):
     return u
 
 def add_post(id,content,timeCreated,poster_id):
-    p = Post.objects.get_orcreate(id=id,content=content,poster_id=poster_id,timeCreated = timeCreated)[0]
+    p = Post.objects.get_or_create(id=id,content=content,poster_id=poster_id,timeCreated = timeCreated)[0]
     p.save()
     return p
 
