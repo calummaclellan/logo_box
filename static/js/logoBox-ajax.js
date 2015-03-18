@@ -11,6 +11,7 @@ $(document).ready(function(){
         $.get('/logoBox/like_post/',{post_id: postid}, function(data){
             btn.prev().html(data);
             btn.attr("disabled", true);
+            $($('button[id="'+postid+'"]')).attr("disabled", true);
         });
     });
     $('.dislike').click(function(){
@@ -20,6 +21,7 @@ $(document).ready(function(){
         $.get('/logoBox/dislike_post/',{post_id: postid}, function(data){
             btn.prev().html(data);
             btn.attr("disabled", true);
+            $($('button[id="'+postid+'_likebutton"]')).attr("disabled", true);
         });
     });
 
@@ -27,7 +29,7 @@ $(document).ready(function(){
 
 	// Defining our jQuery plugin
 
-	$.fn.paulund_modal_box = function(prop){
+	$.fn.modal_box = function(prop){
 
 		// Default parameters
 
@@ -45,11 +47,11 @@ $(document).ready(function(){
 			add_popup_box();
 			add_styles();
 
-			$('.paulund_modal_box').fadeIn();
+			$('.modal_box').fadeIn();
 		});
 
 		 function add_styles(){
-			$('.paulund_modal_box').css({
+			$('.modal_box').css({
 				'position':'absolute',
 				'left':options.left,
 				'top':options.top,
@@ -64,9 +66,9 @@ $(document).ready(function(){
 				'-moz-border-radius':'10px',
 				'-webkit-border-radius':'10px',
 				'background': '#f2f2f2',
-				'z-index':'50',
+				'z-index':'50'
 			});
-			$('.paulund_modal_close').css({
+			$('.modal_close').css({
 				'position':'relative',
 				'top':'-25px',
 				'left':'20px',
@@ -74,13 +76,13 @@ $(document).ready(function(){
 				'display':'block',
 				'height':'50px',
 				'width':'50px',
-				'background': 'url(images/close.png) no-repeat',
+				'background': 'url(images/close.png) no-repeat'
 			});
                         /*Block page overlay*/
 			var pageHeight = $(document).height();
 			var pageWidth = $(window).width();
 
-			$('.paulund_block_page').css({
+			$('.block_page').css({
 				'position':'absolute',
 				'top':'0',
 				'left':'0',
@@ -89,7 +91,7 @@ $(document).ready(function(){
 				'width':pageWidth,
 				'z-index':'10'
 			});
-			$('.paulund_inner_modal_box').css({
+			$('.inner_modal_box').css({
 				'background-color':'#fff',
 				'height':(options.height - 50) + 'px',
 				'width':(options.width - 50) + 'px',
@@ -102,21 +104,21 @@ $(document).ready(function(){
 		}
 
 		 function add_block_page(){
-			var block_page = $('<div class="paulund_block_page"></div>');
+			var block_page = $('<div class="block_page"></div>');
 
 			$(block_page).appendTo('body');
 		}
 
 		 function add_popup_box(){
-			 var pop_up = $('<div class="paulund_modal_box">' +
-                 '<a href="#" class="paulund_modal_close"> + </a>' +
-                 '<div class="paulund_inner_modal_box"> </div></div>');
-			 $(pop_up).appendTo('.paulund_block_page');
+			 var pop_up = $('<div class="modal_box">' +
+                 '<a href="#" class="modal_close"> + </a>' +
+                 '<div class="inner_modal_box"> </div></div>');
+			 $(pop_up).appendTo('.block_page');
 
 
-			 $('.paulund_modal_close').click(function(){
+			 $('.modal_close').click(function(){
 				$(this).parent().fadeOut().remove();
-				$('.paulund_block_page').fadeOut().remove();
+				$('.block_page').fadeOut().remove();
 			 });
 		}
 

@@ -30,8 +30,10 @@ class Post(models.Model):
         return self.poster_id
 
 class Rating(models.Model):
-    post_id_rate = models.ForeignKey('Post', default="")
-    poster_id_rate = models.ForeignKey('UserProfile', default="")
+    post_id_rate = models.CharField(max_length = 64,default='1')
+    poster_id_rate = models.CharField(max_length = 64,default='1')
+    #post_id_rate = models.ForeignKey(Post, db_index = False)
+    #poster_id_rate = models.ForeignKey(UserProfile, db_index = False)
 
     def __unicode__(self):
         return self.post_id_rate
