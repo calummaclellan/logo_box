@@ -21,23 +21,18 @@ $(document).ready(function(){
         $.get('/logoBox/dislike_post/',{post_id: postid}, function(data){
             btn.prev().html(data);
             btn.attr("disabled", true);
-            $($('button[id="'+postid+'_likebutton"]')).attr("disabled", true);
+            $($('button[id="'+postid+'"]')).attr("disabled", true);
         });
     });
 
 (function($){
 
-	// Defining our jQuery plugin
-
 	$.fn.modal_box = function(prop){
 
 		// Default parameters
-
 		var options = $.extend({
 			height : "250",
 			width : "500",
-			title:"JQuery Modal Box Demo",
-			description: "Example of how to create a modal box.",
 			top: "20%",
 			left: "30%"
 		},prop);
@@ -46,7 +41,6 @@ $(document).ready(function(){
 			add_block_page();
 			add_popup_box();
 			add_styles();
-
 			$('.modal_box').fadeIn();
 		});
 
@@ -105,16 +99,15 @@ $(document).ready(function(){
 
 		 function add_block_page(){
 			var block_page = $('<div class="block_page"></div>');
-
 			$(block_page).appendTo('body');
 		}
 
 		 function add_popup_box(){
-			 var pop_up = $('<div class="modal_box">' +
+             var pop_up =  $.get('/logoBox/post/', function(data){});
+			/* var pop_up =  $('<div class="modal_box">' +
                  '<a href="#" class="modal_close"> + </a>' +
-                 '<div class="inner_modal_box"> </div></div>');
+                 '<div class="inner_modal_box"> Stuff goes here  </div></div>');*/
 			 $(pop_up).appendTo('.block_page');
-
 
 			 $('.modal_close').click(function(){
 				$(this).parent().fadeOut().remove();

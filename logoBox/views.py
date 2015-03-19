@@ -85,6 +85,10 @@ def like_post(request):
     likes = 0
     if post_id:
         post = Post.objects.get(id=int(post_id))
+        ratings = Rating.objects.all()
+        for rating in ratings:
+            if rating.poster_id_rate == request.user.username and rating.post_id_rate == post_id:
+                return
         if post:
             likes = post.likes+1
             post.likes = likes
@@ -101,6 +105,10 @@ def dislike_post(request):
     dislikes = 0
     if post_id:
         post = Post.objects.get(id=int(post_id))
+        ratings = Rating.objects.all()
+        for rating in ratings:
+            if rating.poster_id_rate == request.user.username and rating.post_id_rate== post_id:
+                return
         if post:
             dislikes = post.dislikes+1
             post.dislikes = dislikes
@@ -110,9 +118,8 @@ def dislike_post(request):
     return HttpResponse(dislikes)
 
 def rate(post_id, poster_id):
-    print poster_id
-    r = Rating.objects.get_or_create(post_id_rate = post_id, poster_id_rate = poster_id)
-    print "hereee"
-    return
 
+    r = Rating.objects.get_or_create(post_id_rate = post_id, poster_id_rate = poster_id)
+
+    return
 
