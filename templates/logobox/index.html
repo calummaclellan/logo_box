@@ -12,7 +12,7 @@
                 <div id="columns">
                     {%  for post in posts %}
 		                <div class="pin">
-                            {% if post.picture != blank %}
+                            {% if post.picture %}
                             <img src="/media/{{ post.picture }}" alt = {{ post.picture }} >
                             {% endif %}
 

@@ -67,7 +67,6 @@ def create_post(request):
 
             post.poster_id = poster
 
-
             if 'picture' in request.FILES:
                 print "pic"
                 post.picture = request.FILES['picture']
@@ -82,7 +81,7 @@ def create_post(request):
     else:
         form = PostForm()
 
-    return render(request, 'logoBox/post.html', {'form': form})
+    return render(request, 'logoBox/index.html', {'form': form})
 
 
 def like_post(request):
