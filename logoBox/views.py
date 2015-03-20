@@ -54,7 +54,7 @@ def user_logout(request):
 
 def create_post(request):
     if request.method == 'POST':
-        form = PostForm(request.POST)
+        form = PostForm(request.POST, request.FILES)
         #user = request.user
         #check user authenticate request user
         poster = request.user.username
@@ -62,6 +62,8 @@ def create_post(request):
 
             post = form.save(commit=False)
             post.poster_id = poster
+            if 'picture' in request.FILES:
+                post.picture = request.FILES['picture']
 
             post.save()
             return HttpResponseRedirect('/logoBox/')

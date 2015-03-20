@@ -103,10 +103,10 @@ $(document).ready(function(){
 		}
 
 		 function add_popup_box(){
-             var pop_up =  $.get('/logoBox/post/', function(data){});
-			/* var pop_up =  $('<div class="modal_box">' +
+
+			 var pop_up =  $('<div class="modal_box">' +
                  '<a href="#" class="modal_close"> + </a>' +
-                 '<div class="inner_modal_box"> Stuff goes here  </div></div>');*/
+                 '<div class="inner_modal_box"> Stuff goes here  </div></div>');
 			 $(pop_up).appendTo('.block_page');
 
 			 $('.modal_close').click(function(){

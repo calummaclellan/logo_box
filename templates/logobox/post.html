@@ -9,7 +9,7 @@
 
     Anything!!!
     <h3>Post</h3>
-    <form id="post_form" method ="POST" action = "/logoBox/post">
+    <form id="post_form" enctype="multipart/form-data" method ="POST" action = "/logoBox/post">
             {% csrf_token %}
             {% for hidden in form.hidden_fields %}
                 {{ hidden }}

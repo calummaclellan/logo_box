@@ -21,8 +21,9 @@ class PostForm(forms.ModelForm):
     #timeCreated = forms.DateTimeField(widget=forms.HiddenInput())
     #lastActive = forms.DateTimeField(widget=forms.HiddenInput())
     poster_id= forms.CharField(widget=forms.HiddenInput(),max_length = 64, initial ='anonymous')
+    picture = forms.ImageField(required=False)
 
     class Meta:
         model = Post
         #exclude = ('category','likes','dislikes','timeCreated','lastActive','poster_id')
-        fields = ['content',]#,'timeCreated','lastActive']
+        fields = ['content','picture']#,'timeCreated','lastActive']
