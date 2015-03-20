@@ -7,24 +7,33 @@
 {% block body_block %}
     {% if posts %}
 
-        {%  for post in posts %}
-            <div style="border:1px solid; width:20%;float:left;margin:5px">{{ post.content }}
-                {% if post.picture != blank %}
-                <img src="/media/{{ post.picture }}" alt = {{ post.picture }}>""</img>
-                {% endif %}
-                <strong id="{{ post.id }}_likes" class="count">{{ post.likes }}</strong>
-                {% if user.is_authenticated %}
 
-                        <button id="{{post.id}}_likebutton" data-postid="{{post.id}}" class="like" type="button">
-                            Like</button>
+            <div id="wrapper">
+                <div id="columns">
+                    {%  for post in posts %}
+		                <div class="pin">
+                            {% if post.picture != blank %}
+                            <img src="/media/{{ post.picture }}" alt = {{ post.picture }} >
+                            {% endif %}
 
-                {% endif %}
-                <strong id="{{ post.id }}_dislikes" class="count">{{ post.dislikes }}</strong>
-                {% if user.is_authenticated %}
-                   <button id="{{post.id}}_dislikebutton" data-postid="{{post.id}}" class="dislike" type="button">Dislike</button>
-                {% endif %}
+                            <p>{{ post.content }}</p>
+
+                            <span>
+                            <strong id="{{ post.id }}_likes" class="count">{{ post.likes }}</strong>
+                            {% if user.is_authenticated %}
+                                <button id="{{post.id}}_likebutton" data-postid="{{post.id}}" class="like" type="button">
+                                        Like</button>
+                            {% endif %}
+                            <strong id="{{ post.id }}_dislikes" class="count">{{ post.dislikes }}</strong>
+                            {% if user.is_authenticated %}
+                            <button id="{{post.id}}_dislikebutton" data-postid="{{post.id}}" class="dislike" type="button">Dislike</button>
+                            {% endif %}
+                            </span>
+                         </div>
+                    {% endfor %}
+                </div>
             </div>
-        {% endfor %}
+
 
     {% endif %}
 
