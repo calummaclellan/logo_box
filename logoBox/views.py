@@ -55,15 +55,21 @@ def user_logout(request):
 
 def create_post(request):
     if request.method == 'POST':
+
         form = PostForm(request.POST, request.FILES)
+
         #user = request.user
         #check user authenticate request user
         poster = request.user.username
         if form.is_valid():
 
             post = form.save(commit=False)
+
             post.poster_id = poster
+
+
             if 'picture' in request.FILES:
+                print "pic"
                 post.picture = request.FILES['picture']
 
             post.save()
