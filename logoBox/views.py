@@ -7,10 +7,13 @@ from logoBox.models import Rating
 import time
 
 def index(request):
-    posts = Post.objects.all()
+    most_liked_posts = Post.objects.order_by('-likes')[:8]
+    most_hated_posts = Post.objects.order_by('-dislikes')[:7]
+    #most_recent_posts = Post.objects.order_by('timeCreated').latest()[:5]
     ratings = Rating.objects.all()
     form = PostForm()
-    context_dict = {'posts': posts, 'ratings': ratings, 'form': form}
+    context_dict = {'most_liked_posts': most_liked_posts, 'most_hated_posts':most_hated_posts, 'ratings': ratings, 'form': form,
+                    }#'most_recent_posts':most_recent_posts}
     return render(request, 'logoBox/index.html', context_dict)
 
 def user_login(request):
@@ -82,7 +85,7 @@ def create_post(request):
     else:
         form = PostForm()
 
-    return render(request, 'logoBox/post.html', {'form': form})
+    return render(request, 'logoBox/index.html', {'form': form})
 
 
 def like_post(request):

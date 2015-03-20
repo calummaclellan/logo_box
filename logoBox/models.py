@@ -21,11 +21,14 @@ class Post(models.Model):
     content = models.CharField(max_length = 256)
     likes = models.IntegerField(default =0)
     dislikes = models.IntegerField(default = 0)
-    timeCreated = models.DateTimeField(default = datetime.date.today())
-    lastActive = models.DateTimeField(default = datetime.date.today())
+    timeCreated = models.DateTimeField(auto_now_add=True)
+    lastActive = models.DateTimeField(auto_now=True)
     picture = models.ImageField(upload_to='poster_images', blank=True)
     #poster_id= models.CharField(max_length = 64)
     #poster_id = models.ForeignKey(UserProfile)
+
+    class Meta:
+      get_latest_by = 'timeCreated'
 
     def __unicode__(self):
         return self.poster_id

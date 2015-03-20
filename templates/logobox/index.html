@@ -5,14 +5,14 @@
 
 
 {% block body_block %}
-    {% if posts %}
+    {% if most_liked_posts %}
 
 
             <div id="wrapper">
                 <div id="columns">
-                    {%  for post in posts %}
+                    {%  for post in most_liked_posts %}
 		                <div class="pin">
-                            {% if post.picture != blank %}
+                            {% if post.picture %}
                             <img src="/media/{{ post.picture }}" alt = {{ post.picture }} >
                             {% endif %}
 
@@ -31,11 +31,59 @@
                             </span>
                          </div>
                     {% endfor %}
+                    {%  for post in most_hated_posts %}
+                            <div class="pin">
+                                {% if post.picture != blank %}
+                                <img src="/media/{{ post.picture }}" alt = {{ post.picture }} >
+                                {% endif %}
+
+                                <p>{{ post.content }}</p>
+
+                                <span>
+                                <strong id="{{ post.id }}_likes" class="count">{{ post.likes }}</strong>
+                                {% if user.is_authenticated %}
+                                    <button id="{{post.id}}_likebutton" data-postid="{{post.id}}" class="like" type="button">
+                                            Like</button>
+                                {% endif %}
+                                <strong id="{{ post.id }}_dislikes" class="count">{{ post.dislikes }}</strong>
+                                {% if user.is_authenticated %}
+                                <button id="{{post.id}}_dislikebutton" data-postid="{{post.id}}" class="dislike" type="button">Dislike</button>
+                                {% endif %}
+                                </span>
+                             </div>
+                        {% endfor %}
+
+                        {%  for post in most_recent_posts %}
+                            <div class="pin">
+                                {% if post.picture != blank %}
+                                <img src="/media/{{ post.picture }}" alt = {{ post.picture }} >
+                                {% endif %}
+
+                                <p>{{ post.content }}</p>
+
+                                <span>
+                                <strong id="{{ post.id }}_likes" class="count">{{ post.likes }}</strong>
+                                {% if user.is_authenticated %}
+                                    <button id="{{post.id}}_likebutton" data-postid="{{post.id}}" class="like" type="button">
+                                            Like</button>
+                                {% endif %}
+                                <strong id="{{ post.id }}_dislikes" class="count">{{ post.dislikes }}</strong>
+                                {% if user.is_authenticated %}
+                                <button id="{{post.id}}_dislikebutton" data-postid="{{post.id}}" class="dislike" type="button">Dislike</button>
+                                {% endif %}
+                                </span>
+                             </div>
+                        {% endfor %}
+
+
                 </div>
+
+
             </div>
 
 
     {% endif %}
+
 
 {% endblock %}
 
