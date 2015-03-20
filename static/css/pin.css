@@ -24,6 +24,7 @@ body {
 }
 
 .pin {
+    font-weight:bold ;
 	display: inline-block;
 	background: #FEFEFE;
 	border: 2px solid #FAFAFA;
@@ -86,6 +87,18 @@ body {
 		-moz-column-count: 5;
 		column-count: 5;
 	}
+}
+
+#most_liked{
+    background: #b2dba1;
+}
+
+#most_not_liked{
+    background: #94Add0;
+}
+
+#most_recent{
+    background: rgba(221, 98, 210, 0.76);
 }
 /*
 #columns:hover .pin:not(:hover) {

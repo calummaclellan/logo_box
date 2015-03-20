@@ -17,14 +17,15 @@
     </head>
 
     <body>
+
         <div>
-            <h1>logoBox  </h1>
+            <h1><strong>logoBox </strong>  -   it's a definately not shit image posting site!</h1>
             <br>
             {% if user.is_authenticated %}
                 User: <strong>{{ user.username }}</strong> <br>
 
                 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="">Create a Post</button>
-                <button onclick = "location.href= '{% url 'logout' %}'">Logout</button>
+                <button type="button" class="btn btn-primary" onclick = "location.href= '{% url 'logout' %}'">Logout</button>
 
                 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                   <div class="modal-dialog">
@@ -46,9 +47,6 @@
                                 {{ field }}
                             {% endfor %}
 
-
-
-
                         <!--
                           <div class="form-group">
                            <textarea class="form-control" id="message-text"></textarea>
@@ -58,7 +56,6 @@
 
                           </div>
                           -->
-
                       </div>
                       <div class="modal-footer">
                         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>

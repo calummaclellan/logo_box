@@ -17,7 +17,7 @@ class UserProfile(models.Model):
 
 class Post(models.Model):
     poster_id= models.CharField(max_length = 64,default='1')
-    category = models.CharField(max_length = 64, default='cat')
+    category = models.CharField(max_length = 64, default='')
     content = models.CharField(max_length = 256)
     likes = models.IntegerField(default =0)
     dislikes = models.IntegerField(default = 0)

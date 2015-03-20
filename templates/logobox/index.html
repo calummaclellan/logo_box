@@ -5,71 +5,117 @@
 
 
 {% block body_block %}
+
+
     {% if most_liked_posts %}
 
 
             <div id="wrapper">
+
+
                 <div id="columns">
+
+
+                      <div>
+                    {% if catSet %}
+                        <h5>See posts by tag:</h4>
+                        <ul class="nav nav-sidebar">
+                             {% for c in catSet %}
+                                   <li><a href=""> {{ c }}</a></li>
+                              {% endfor %}
+                         </ul>
+                    {% endif %}
+                     </div>
                     {%  for post in most_liked_posts %}
-		                <div class="pin">
+		                <div class="pin" id="most_liked">
                             {% if post.picture %}
                             <img src="/media/{{ post.picture }}" alt = {{ post.picture }} >
                             {% endif %}
 
-                            <p>{{ post.content }}</p>
-
+                            <p ><strong>{{ post.content }}</strong></p>
+                            <br>
+                            {% if post.category %}
+                                    <strong>Tag: {{ post.category }}</strong>
+                                {% endif %}
+                                <br>
                             <span>
                             <strong id="{{ post.id }}_likes" class="count">{{ post.likes }}</strong>
                             {% if user.is_authenticated %}
+
                                 <button id="{{post.id}}_likebutton" data-postid="{{post.id}}" class="like" type="button">
                                         Like</button>
+
+                            {% else%}
+                               <strong> Likes,</strong>
                             {% endif %}
+
                             <strong id="{{ post.id }}_dislikes" class="count">{{ post.dislikes }}</strong>
                             {% if user.is_authenticated %}
                             <button id="{{post.id}}_dislikebutton" data-postid="{{post.id}}" class="dislike" type="button">Dislike</button>
+                            {% else %}
+                                    <strong> Dislikes: </strong>
                             {% endif %}
                             </span>
                          </div>
                     {% endfor %}
                     {%  for post in most_hated_posts %}
-                            <div class="pin">
-                                {% if post.picture != blank %}
+                            <div class="pin" id="most_not_liked">
+                                {% if post.picture %}
                                 <img src="/media/{{ post.picture }}" alt = {{ post.picture }} >
                                 {% endif %}
 
-                                <p>{{ post.content }}</p>
-
+                                <p ><strong>{{ post.content }}</strong></p>
+                                <br>
+                                {% if post.category %}
+                                    <strong>Tag: {{ post.category }}</strong>
+                                {% endif %}
+                                <br>
                                 <span>
                                 <strong id="{{ post.id }}_likes" class="count">{{ post.likes }}</strong>
                                 {% if user.is_authenticated %}
                                     <button id="{{post.id}}_likebutton" data-postid="{{post.id}}" class="like" type="button">
                                             Like</button>
+
+                                {% else %}
+                                        <strong> Likes, </strong>
+
                                 {% endif %}
+
                                 <strong id="{{ post.id }}_dislikes" class="count">{{ post.dislikes }}</strong>
                                 {% if user.is_authenticated %}
                                 <button id="{{post.id}}_dislikebutton" data-postid="{{post.id}}" class="dislike" type="button">Dislike</button>
+                                {% else %}
+                                    <strong> Dislikes </strong>
                                 {% endif %}
                                 </span>
                              </div>
                         {% endfor %}
 
                         {%  for post in most_recent_posts %}
-                            <div class="pin">
-                                {% if post.picture != blank %}
+                            <div class="pin" id="most_recent">
+                                {% if post.picture %}
                                 <img src="/media/{{ post.picture }}" alt = {{ post.picture }} >
                                 {% endif %}
 
-                                <p>{{ post.content }}</p>
-
+                                <p ><strong>{{ post.content }}</strong></p>
+                                 <br>
+                                {% if post.category %}
+                                    <strong>Tag: {{ post.category }}</strong>
+                                {% endif %}
+                                <br>
                                 <span>
                                 <strong id="{{ post.id }}_likes" class="count">{{ post.likes }}</strong>
                                 {% if user.is_authenticated %}
                                     <button id="{{post.id}}_likebutton" data-postid="{{post.id}}" class="like" type="button">
                                             Like</button>
+                                    {% else %}
+                               <strong> Likes, </strong>
                                 {% endif %}
                                 <strong id="{{ post.id }}_dislikes" class="count">{{ post.dislikes }}</strong>
                                 {% if user.is_authenticated %}
                                 <button id="{{post.id}}_dislikebutton" data-postid="{{post.id}}" class="dislike" type="button">Dislike</button>
+                                {% else %}
+                               <strong> Dislikes</strong>
                                 {% endif %}
                                 </span>
                              </div>
