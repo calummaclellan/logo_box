@@ -70,7 +70,6 @@ def create_post(request):
 
             post.poster_id = poster
 
-
             if 'picture' in request.FILES:
                 print "pic"
                 post.picture = request.FILES['picture']
