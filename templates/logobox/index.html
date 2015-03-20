@@ -3,11 +3,15 @@
 {% load static %}
 {% load staticfiles %}
 
+
 {% block body_block %}
     {% if posts %}
 
         {%  for post in posts %}
             <div style="border:1px solid; width:20%;float:left;margin:5px">{{ post.content }}
+                {% if post.picture != blank %}
+                <img src="/media/{{ post.picture }}" alt = {{ post.picture }}>""</img>
+                {% endif %}
                 <strong id="{{ post.id }}_likes" class="count">{{ post.likes }}</strong>
                 {% if user.is_authenticated %}
 
@@ -25,3 +29,4 @@
     {% endif %}
 
 {% endblock %}
+

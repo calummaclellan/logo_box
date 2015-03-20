@@ -23,6 +23,7 @@ class Post(models.Model):
     dislikes = models.IntegerField(default = 0)
     timeCreated = models.DateTimeField(default = datetime.date.today())
     lastActive = models.DateTimeField(default = datetime.date.today())
+    picture = models.ImageField(upload_to='poster_images', blank=True)
     #poster_id= models.CharField(max_length = 64)
     #poster_id = models.ForeignKey(UserProfile)
 
