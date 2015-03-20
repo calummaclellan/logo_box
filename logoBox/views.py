@@ -87,6 +87,7 @@ def create_post(request):
         else:
             print "THERE BE ERRORS"
             print form.errors
+            return HttpResponseRedirect('/logoBox/')
 
     else:
         form = PostForm()

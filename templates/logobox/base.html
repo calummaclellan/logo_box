@@ -68,8 +68,8 @@
                 </div>
 
             {% else %}
-                <button onclick = "location.href= '{% url 'auth_login' %}'"> Login  </button>
-                <button onclick = "location.href= '{% url 'registration_register' %}'"> Register  </button>
+                <button class="btn btn-danger" onclick = "location.href= '{% url 'auth_login' %}'"> Login  </button>
+                <button  class="btn btn-success" onclick = "location.href= '{% url 'registration_register' %}'"> Register  </button>
 
             {% endif %}
             <a href="#" class="modal">Click Here</a>
