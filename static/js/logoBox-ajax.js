@@ -101,12 +101,14 @@ $(document).ready(function(){
 			var block_page = $('<div class="block_page"></div>');
 			$(block_page).appendTo('body');
 		}
-
+/*
 		 function add_popup_box(){
-             var pop_up =  $.get('/logoBox/post/', function(data){});
-			/* var pop_up =  $('<div class="modal_box">' +
+             //var pop_up =  $.get('/logoBox/post/', function(data){});
+			 var pop_up =  $('<div class="modal_box">' +
                  '<a href="#" class="modal_close"> + </a>' +
-                 '<div class="inner_modal_box"> Stuff goes here  </div></div>');*/
+                 '<div class="inner_modal_box"> ' +
+                 '<form><textarea></textarea><br/><input type="submit"></form>' +
+                 ' </div></div>');
 			 $(pop_up).appendTo('.block_page');
 
 			 $('.modal_close').click(function(){
@@ -114,6 +116,7 @@ $(document).ready(function(){
 				$('.block_page').fadeOut().remove();
 			 });
 		}
+		*/
 
 		return this;
 	};

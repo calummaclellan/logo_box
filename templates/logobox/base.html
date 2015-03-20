@@ -1,9 +1,15 @@
 <!DOCTYPE html>
 
+{% load staticfiles %}
+{% load static %}
 
 
 <html>
     <head lang="en">
+        <script src="{% static "js/jquery-1.11.2.js" %}"></script>
+        <script src="{% static "js/logoBox-ajax.js" %}"></script>
+        <script src="{% static "js/bootstrap.min.js" %}"></script>
+        <link rel="stylesheet" href="{% static "css/bootstrap.min.css" %}" />
 
         <meta charset="UTF-8">
         <title>logoBox</title>
@@ -15,13 +21,57 @@
             <br>
             {% if user.is_authenticated %}
                 User: <strong>{{ user.username }}</strong> <br>
-                <button onclick = "location.href= '{% url 'post' %}'"> Create a Post  </button>
-                <button onclick = "location.href= '{% url 'logout' %}'"> Logout  </button>
+                <!--<button onclick = "location.href= '{% url 'post' %}'"> Create a Post  </button>-->
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="">Create a Post</button>
+                <button onclick = "location.href= '{% url 'logout' %}'">Logout</button>
+
+                <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                  <div class="modal-dialog">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="exampleModalLabel">New message</h4>
+                      </div>
+                    <form action="/logoBox/post" method="post">
+                      <div class="modal-body">
+
+                            {% csrf_token %}
+                            {% for hidden in form.hidden_fields %}
+                                {{ hidden }}
+                            {% endfor %}
+
+                            {% for field in form.visible_fields %}
+                                {{ field.errors }}
+                                {{ field }}
+                            {% endfor %}
+
+
+
+
+                        <!--
+                          <div class="form-group">
+                           <textarea class="form-control" id="message-text"></textarea>
+
+                            <label for="message-text" class="control-label">Message:</label>
+                            <textarea class="form-control" id="message-text"></textarea>
+
+                          </div>
+                          -->
+
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        <input type="submit" class="btn btn-primary" value="Post">
+                      </div>
+                    </form>
+                    </div>
+
+                  </div>
+                </div>
 
             {% else %}
-
-            <button onclick = "location.href= '{% url 'auth_login' %}'"> Login  </button>
-             <button onclick = "location.href= '{% url 'registration_register' %}'"> Register  </button>
+                <button onclick = "location.href= '{% url 'auth_login' %}'"> Login  </button>
+                <button onclick = "location.href= '{% url 'registration_register' %}'"> Register  </button>
 
             {% endif %}
             <a href="#" class="modal">Click Here</a>
@@ -35,13 +85,13 @@
         {% endblock %}
         <div id="somediv">
         </div>
-    {% load staticfiles %}
-    <script src="{% static "js/jquery-1.11.2.js" %}"></script>
-    <script src="{% static "js/logoBox-ajax.js" %}"></script>
-    <script>
+
+
+
+    <!--<script>
         $(document).ready(function(){
 	    $('.modal').modal_box();
         });
-    </script>
+    </script>-->
     </body>
 </html>

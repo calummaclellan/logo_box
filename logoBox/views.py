@@ -9,8 +9,9 @@ import time
 def index(request):
     posts = Post.objects.all()
     ratings = Rating.objects.all()
-    context_dict = {'posts': posts, 'ratings':ratings}
-    return render(request, 'logoBox/index.html',context_dict)
+    form = PostForm()
+    context_dict = {'posts': posts, 'ratings': ratings, 'form': form}
+    return render(request, 'logoBox/index.html', context_dict)
 
 def user_login(request):
 
@@ -73,7 +74,7 @@ def create_post(request):
     else:
         form = PostForm()
 
-    return render(request, 'logoBox/post.html',{'form':form})
+    return render(request, 'logoBox/post.html', {'form': form})
 
 
 def like_post(request):
