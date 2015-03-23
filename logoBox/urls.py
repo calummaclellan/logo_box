@@ -10,5 +10,5 @@ urlpatterns = patterns('',
         url(r'^logout/$', views.user_logout, name='logout'),
         url(r'^like_post/$', views.like_post, name = 'like_post'),
         url(r'^dislike_post/$', views.dislike_post, name = 'dislike_post'),
-        #url(r'^')
+        url(r'^tag/(?P<tag>[\w\-]+)/$', views.get_tagged, name = 'get_tagged'),
         )
