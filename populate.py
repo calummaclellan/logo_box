@@ -20,7 +20,7 @@ def populate():
     add_post(id=330,content='populate 8',poster_id='admin')
     add_post(id=331,content='populate 9',poster_id='admin')
     add_post(id=332,content='populate 10',poster_id='admin')
-    add_post(id=322,content='populate 11',poster_id='admin')
+
 
 
 #def add_user(user, password):
