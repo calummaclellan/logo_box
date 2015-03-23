@@ -14,7 +14,7 @@ class UserForm(forms.ModelForm):
 class PostForm(forms.ModelForm):
 
     #id = forms.IntegerField(widget=forms.HiddenInput())
-    category = forms.CharField( max_length = 64, help_text= "Enter a tag here: ")
+    category = forms.CharField( max_length = 64, help_text= "Enter a tag here: ", required = False)
     content = forms.CharField(max_length = 500, help_text="Add Content here:", widget=forms.Textarea)
     likes = forms.IntegerField(widget=forms.HiddenInput(),initial=12)
     dislikes = forms.IntegerField(widget=forms.HiddenInput(),initial=0)

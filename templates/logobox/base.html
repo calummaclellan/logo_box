@@ -79,10 +79,10 @@
         <div>
 
         <div class = "navbar-bar">
-                         {% if catSet %}
+                         {% if tagSet %}
                              <h4>See posts by tag:</h4>
                              <ul>
-                                {% for c in catSet %}
+                                {% for c in tagSet %}
                                     <li><a href="/logoBox/tag/{{c}}"> {{ c }}</a></li>
                                 {% endfor %}
                              </ul>

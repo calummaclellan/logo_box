@@ -17,14 +17,18 @@ class UserProfile(models.Model):
 class Post(models.Model):
     id = models.AutoField(primary_key=True)
     poster_id= models.CharField(max_length = 64,default='1')
-    category = models.CharField(max_length = 64, blank = True)
+    category = models.CharField(max_length = 64, blank=True)
     content = models.CharField(max_length = 256)
     likes = models.IntegerField(default =0)
     dislikes = models.IntegerField(default = 0)
     timeCreated = models.DateTimeField(auto_now_add=True)
     lastActive = models.DateTimeField(auto_now=True)
     picture = models.ImageField(upload_to='poster_images', blank=True)
+    slug = models.SlugField(unique=True, blank = True)
 
+    def save(self, *args, **kwargs):
+                self.slug = slugify(self.category)
+                super(Post, self).save(*args, **kwargs)
     #poster_id= models.CharField(max_length = 64)
     #poster_id = models.ForeignKey(UserProfile)
 

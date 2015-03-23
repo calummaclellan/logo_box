@@ -9,9 +9,9 @@ from logoBox.models import Rating, Tag
 def index(request):
 
     posts = Post.objects.all()
-    catSet = set()#{Tag.objects.all()
+    tagSet = set()#{Tag.objects.all()
     for post in posts:
-        catSet.add(post.category)
+        tagSet.add(post.slug)
 
     most_liked_posts = Post.objects.order_by('-likes')[:5]
     most_hated_posts = Post.objects.order_by('-dislikes')[:5]
@@ -19,7 +19,7 @@ def index(request):
     ratings = Rating.objects.all()
     form = PostForm()
     context_dict = {'most_liked_posts': most_liked_posts, 'most_hated_posts':most_hated_posts, 'ratings': ratings, 'form': form,
-                    'most_recent_posts':most_recent_posts, 'posts':posts, 'catSet':catSet}
+                    'most_recent_posts':most_recent_posts, 'posts':posts, 'tagSet':tagSet}
     return render(request, 'logoBox/index.html', context_dict)
 
 def user_login(request):
@@ -76,8 +76,8 @@ def create_post(request):
             if 'picture' in request.FILES:
                 post.picture = request.FILES['picture']
 
-            if 'category' in request.POST:
-                print "Looook!"
+            #if 'category' in request.POST:
+               # print "Looook!"
                 #tag = request.POST['category']
                 #splitTag = tag.split(" ")
                 #if splitTag.size() > 1:
@@ -148,12 +148,17 @@ def rate(post_id, poster_id):
 #view returns posts tagged with a given tag
 def get_tagged(request, tag):
 
+    posts = Post.objects.all()
+    tagSet = set()#{Tag.objects.all()
+    for post in posts:
+        tagSet.add(post.slug)
 
     form = PostForm()
     print tag
     context_dict = {}
-    posts = Post.objects.filter(category = tag)[:8]
+    posts = Post.objects.filter(slug = tag)[:8]
     context_dict['tagged_posts'] = posts
     context_dict['form'] = form
+    context_dict['tagSet'] = tagSet
 
     return render(request, 'logoBox/tag.html', context_dict, )
