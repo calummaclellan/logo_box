@@ -147,12 +147,13 @@ def rate(post_id, poster_id):
 
 #view returns posts tagged with a given tag
 def get_tagged(request, tag):
+
+
     form = PostForm()
     print tag
     context_dict = {}
     posts = Post.objects.filter(category = tag)[:8]
     context_dict['tagged_posts'] = posts
     context_dict['form'] = form
-
 
     return render(request, 'logoBox/tag.html', context_dict, )
