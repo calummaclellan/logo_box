@@ -24,7 +24,7 @@ def populate():
     add_rate(post_id_rate=333,poster_id_rate='admin')
     add_rate(post_id_rate=334,poster_id_rate='admin')
     add_rate(post_id_rate=335,poster_id_rate='admin')
-    #add_rate(post_id_rate=336,poster_id_rate='admin')
+    add_rate(post_id_rate=336,poster_id_rate='admin')
 
 #def add_user(user, password):
 #    u = UserProfile.objects.get_or_create(user=user, password=password)[0]
