@@ -16,7 +16,7 @@ def populate():
     add_post(id=336,content='populate 4',poster_id='admin',likes=15,dislikes=15, category = 'pop')
     add_post(id=337,content='populate 5',poster_id='admin',likes=18,dislikes=11, category = 'pop')
     add_post(id=338,content='populate 6',poster_id='admin',likes=54,dislikes=15, category = 'pop')
-    add_post(id=339,content='populate 7',poster_id='admin',likes=36,dislikes=13, category = 'pop')
+    add_post(id=339,content='populate 7',poster_id='admin',likes=36,dislikes=13, category = 'mystery tag')
     add_post(id=330,content='populate 8',poster_id='admin',likes=67,dislikes=15, category = 'pop')
     add_post(id=331,content='populate 9',poster_id='admin',likes=12,dislikes=19, category = 'pop')
     add_post(id=332,content='populate 10',poster_id='admin',likes=99,dislikes=22, category = 'pop')
