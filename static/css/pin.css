@@ -4,6 +4,15 @@ body {
 	background: url(http://subtlepatterns.com/patterns/scribble_light.png) ;
 }
 
+#content{
+
+}
+
+#tags{
+    float: left;
+    margin-left: 20px;
+}
+
 #wrapper {
 	width: 90%;
 	max-width: 1100px;
@@ -11,7 +20,7 @@ body {
 	margin: 50px auto;
 }
 
-#columns {
+.columns {
 	-webkit-column-count: 3;
 	-webkit-column-gap: 10px;
 	-webkit-column-fill: auto;
@@ -23,7 +32,20 @@ body {
 	column-fill: auto;
 }
 
+.column{
+    -webkit-column-count: 2;
+	-webkit-column-gap: 10px;
+	-webkit-column-fill: auto;
+	-moz-column-count: 2;
+	-moz-column-gap: 10px;
+	/*-moz-column-fill: auto;*/
+	column-count: 2;
+	column-gap: 10px;
+	column-fill: auto;
+}
+
 .pin {
+    width: 100%;
     font-weight:bold ;
 	display: inline-block;
 	background: #FEFEFE;
@@ -57,6 +79,8 @@ body {
 	margin: 0;
 }
 
+/*
+
 @media (min-width: 320px) {
 	#columns {
 		-webkit-column-count: 1;
@@ -83,21 +107,23 @@ body {
 
 @media (min-width: 1100px) {
 	#columns {
-		-webkit-column-count: 5;
-		-moz-column-count: 5;
-		column-count: 5;
+		-webkit-column-count: 6;
+		-moz-column-count: 6;
+		column-count: 6;
 	}
 }
 
-#most_liked{
+*/
+
+#most_liked_pin{
     background: #b2dba1;
 }
 
-#most_not_liked{
+#least_liked_pin{
     background: #94Add0;
 }
 
-#most_recent{
+#most_recent_pin{
     background: rgba(221, 98, 210, 0.76);
 }
 /*
