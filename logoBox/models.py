@@ -24,7 +24,7 @@ class Post(models.Model):
     timeCreated = models.DateTimeField(auto_now_add=True)
     lastActive = models.DateTimeField(auto_now=True)
     picture = models.ImageField(upload_to='poster_images', blank=True)
-    slug = models.SlugField(unique=True, blank = True)
+    slug = models.SlugField( blank = True)
 
     def save(self, *args, **kwargs):
                 self.slug = slugify(self.category)
