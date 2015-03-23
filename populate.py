@@ -10,17 +10,17 @@ from logoBox.models import Post, UserProfile, Rating
 
 
 def populate():
-    add_post(id=333,content='populate one',poster_id='admin')
-    add_post(id=334,content='populate one',poster_id='admin')
-    add_post(id=335,content='populate one',poster_id='admin')
-    add_post(id=336,content='populate one',poster_id='admin')
-    add_post(id=337,content='populate one',poster_id='admin')
-    add_post(id=338,content='populate one',poster_id='admin')
-    add_post(id=339,content='populate one',poster_id='admin')
-    add_post(id=330,content='populate one',poster_id='admin')
-    add_post(id=331,content='populate one',poster_id='admin')
-    add_post(id=332,content='populate one',poster_id='admin')
-    add_post(id=322,content='populate one',poster_id='admin')
+    add_post(id=333,content='populate 1',poster_id='admin')
+    add_post(id=334,content='populate 2',poster_id='admin')
+    add_post(id=335,content='populate 3',poster_id='admin')
+    add_post(id=336,content='populate 4',poster_id='admin')
+    add_post(id=337,content='populate 5',poster_id='admin')
+    add_post(id=338,content='populate 6',poster_id='admin')
+    add_post(id=339,content='populate 7',poster_id='admin')
+    add_post(id=330,content='populate 8',poster_id='admin')
+    add_post(id=331,content='populate 9',poster_id='admin')
+    add_post(id=332,content='populate 10',poster_id='admin')
+    add_post(id=322,content='populate 11',poster_id='admin')
 
 
 #def add_user(user, password):
