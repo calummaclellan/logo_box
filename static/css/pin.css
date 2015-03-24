@@ -4,9 +4,7 @@ body {
 	background: url(http://subtlepatterns.com/patterns/scribble_light.png) ;
 }
 
-#content{
 
-}
 
 #tags{
     float: left;
@@ -37,6 +35,7 @@ h2{
 }
 
 .column{
+    display: inline-block;
     -webkit-column-count: 2;
 	-webkit-column-gap: 10px;
 	-webkit-column-fill: auto;
