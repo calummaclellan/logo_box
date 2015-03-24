@@ -3,7 +3,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.http import HttpResponseRedirect, HttpResponse
 from logoBox.forms import PostForm
 from logoBox.models import Post
-from logoBox.models import Rating, Tag
+from logoBox.models import Rating
 
 
 def index(request):
@@ -20,7 +20,7 @@ def index(request):
     form = PostForm()
     context_dict = {'most_liked_posts': most_liked_posts, 'most_hated_posts':most_hated_posts, 'ratings': ratings, 'form': form,
                     'most_recent_posts':most_recent_posts, 'posts':posts, 'tagSet':tagSet}
-    return render(request, 'logoBox/index.html', context_dict)
+    return render(request, 'logobox/index.html', context_dict)
 
 def user_login(request):
 
@@ -52,7 +52,7 @@ def user_login(request):
             return HttpResponse("Invalid login details supplied.")
 
     else:
-        return render(request, 'logoBox/login.html', {})
+        return render(request, 'logobox/login.html', {})
 
 
 
@@ -94,7 +94,7 @@ def create_post(request):
     else:
         form = PostForm()
 
-    return render(request, 'logoBox/index.html', {'form': form})
+    return render(request, 'logobox/index.html', {'form': form})
 
 
 def like_post(request):
@@ -161,4 +161,4 @@ def get_tagged(request, tag):
     context_dict['form'] = form
     context_dict['tagSet'] = tagSet
 
-    return render(request, 'logoBox/tag.html', context_dict, )
+    return render(request, 'logobox/tag.html', context_dict, )
