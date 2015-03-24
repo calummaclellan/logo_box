@@ -42,7 +42,7 @@
                                 {% else%}
                                     <strong> Likes,</strong>
                                 {% endif %}
-
+                                <br>
                                 <strong id="{{ post.id }}_dislikes" class="count">{{ post.dislikes }}</strong>
                                 {% if user.is_authenticated %}
                                     <button id="{{post.id}}_dislikebutton" data-postid="{{post.id}}" class="dislike" type="button">Dislike</button>
@@ -78,7 +78,7 @@
                                     <strong> Likes, </strong>
 
                                 {% endif %}
-
+                                <br>
                                 <strong id="{{ post.id }}_dislikes" class="count">{{ post.dislikes }}</strong>
                                 {% if user.is_authenticated %}
                                     <button id="{{post.id}}_dislikebutton" data-postid="{{post.id}}" class="dislike" type="button">Dislike</button>
@@ -112,6 +112,7 @@
                                     {% else %}
                                <strong> Likes, </strong>
                                 {% endif %}
+                                <br>
                                 <strong id="{{ post.id }}_dislikes" class="count">{{ post.dislikes }}</strong>
                                 {% if user.is_authenticated %}
                                 <button id="{{post.id}}_dislikebutton" data-postid="{{post.id}}" class="dislike" type="button">Dislike</button>
