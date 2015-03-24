@@ -1,5 +1,5 @@
 from django.contrib import admin
-from logoBox.models import Post, UserProfile, Rating, Tag
+from logoBox.models import Post, UserProfile, Rating
 
 class PostAdmin(admin.ModelAdmin):
     prepopulated_fields = {'slug':('category',)}
@@ -7,4 +7,4 @@ class PostAdmin(admin.ModelAdmin):
 admin.site.register(Rating)
 admin.site.register(Post)
 admin.site.register(UserProfile)
-admin.site.register(Tag)
+
