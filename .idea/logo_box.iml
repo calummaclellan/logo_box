@@ -13,7 +13,7 @@
     <content url="file://C:/Python27/Lib/site-packages" />
     <content url="file://H:/logo" />
     <content url="file://$MODULE_DIR$" />
-    <orderEntry type="jdk" jdkName="Python 2.7.5 virtualenv at H:\tango_env" jdkType="Python SDK" />
+    <orderEntry type="jdk" jdkName="Python 2.7.5 virtualenv at H:\logo" jdkType="Python SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
   </component>
   <component name="TemplatesService">
