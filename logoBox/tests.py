@@ -33,7 +33,7 @@ class PostTestCase(TestCase):
         from logoBox.views import user_login
         c= Client()
         print c.get('user_login()',{'username': 'john', 'password': 'smith'})
-        self.assertEqual(c,'test')
+        self.assertEqual(c.get(),'test')
 
 
 # Create your tests here.
