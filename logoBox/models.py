@@ -38,16 +38,6 @@ class Post(models.Model):
     def __unicode__(self):
         return self.poster_id
 
-class Tag(models.Model):
-    tag = models.CharField(max_length = 64, blank = True)
-    slug = models.SlugField(unique=True, blank = True)
-
-    def save(self, *args, **kwargs):
-                self.slug = slugify(self.tag)
-                super(Tag, self).save(*args, **kwargs)
-
-    def __unicode__(self):
-        return self.tag
 
 class Rating(models.Model):
     post_id_rate = models.CharField(max_length = 64,default='1')
