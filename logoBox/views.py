@@ -14,9 +14,10 @@ def index(request):
     for post in posts:
         tagSet.add(post.slug)
 
-    most_liked_posts = Post.objects.order_by('-likes')[:32]
-    most_hated_posts = Post.objects.order_by('-dislikes')[:32]
-    most_recent_posts = Post.objects.all().order_by('-timeCreated')[:32]
+    #shows 15 posts in each column
+    most_liked_posts = Post.objects.order_by('-likes')[:15]
+    most_hated_posts = Post.objects.order_by('-dislikes')[:15]
+    most_recent_posts = Post.objects.all().order_by('-timeCreated')[:15]
 
     form = PostForm()
     context_dict = {'most_liked_posts': most_liked_posts, 'most_hated_posts':most_hated_posts,  'form': form,
