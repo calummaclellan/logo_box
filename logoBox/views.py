@@ -5,31 +5,29 @@ from logoBox.forms import PostForm
 from logoBox.models import Post
 from logoBox.models import Rating
 
-
+#index view returns the most liked, most disliked and most recent posts to be displayed in the index page
 def index(request):
 
     posts = Post.objects.all()
-    tagSet = set()#{Tag.objects.all()
+    #create a set containing all of the tags used
+    tagSet = set()
     for post in posts:
         tagSet.add(post.slug)
 
-    most_liked_posts = Post.objects.order_by('-likes')[:42]
-    most_hated_posts = Post.objects.order_by('-dislikes')[:42]
-    most_recent_posts = Post.objects.all().order_by('-timeCreated')[:42]
-    ratings = Rating.objects.all()
+    most_liked_posts = Post.objects.order_by('-likes')[:32]
+    most_hated_posts = Post.objects.order_by('-dislikes')[:32]
+    most_recent_posts = Post.objects.all().order_by('-timeCreated')[:32]
+
     form = PostForm()
-    context_dict = {'most_liked_posts': most_liked_posts, 'most_hated_posts':most_hated_posts, 'ratings': ratings, 'form': form,
+    context_dict = {'most_liked_posts': most_liked_posts, 'most_hated_posts':most_hated_posts,  'form': form,
                     'most_recent_posts':most_recent_posts, 'posts':posts, 'tagSet':tagSet}
     return render(request, 'logobox/index.html', context_dict)
 
+#user login view
 def user_login(request):
 
     if request.method == 'POST':
         # Gather the username and password provided by the user.
-        # This information is obtained from the login form.
-                # We use request.POST.get('<variable>') as opposed to request.POST['<variable>'],
-                # because the request.POST.get('<variable>') returns None, if the value does not exist,
-                # while the request.POST['<variable>'] will raise key error exception
         username = request.POST.get('username')
         password = request.POST.get('password')
 
@@ -54,13 +52,13 @@ def user_login(request):
     else:
         return render(request, 'logobox/login.html', {})
 
-
-
+#user logout view
 def user_logout(request):
     logout(request)
     return HttpResponseRedirect('/logoBox/')
 
 
+#create a new post entity in the database
 def create_post(request):
     if request.method == 'POST':
 
@@ -73,15 +71,9 @@ def create_post(request):
 
             post.poster_id = poster
 
+            #if the user has uploaded a picture include it
             if 'picture' in request.FILES:
                 post.picture = request.FILES['picture']
-
-            #if 'category' in request.POST:
-               # print "Looook!"
-                #tag = request.POST['category']
-                #splitTag = tag.split(" ")
-                #if splitTag.size() > 1:
-                    #post.category = ""
 
             post.save()
             return HttpResponseRedirect('/logoBox/')
@@ -96,7 +88,7 @@ def create_post(request):
 
     return render(request, 'logobox/index.html', {'form': form})
 
-
+#updates the liked field when the like button is pressed
 def like_post(request):
 
     post_id = None
@@ -107,6 +99,7 @@ def like_post(request):
     if post_id:
         post = Post.objects.get(id=int(post_id))
         ratings = Rating.objects.all()
+        #if the post has already been rated by the user dont allow them to rate it by returning without doing anything
         for rating in ratings:
             if rating.poster_id_rate == request.user.username and rating.post_id_rate == post_id:
                 return
@@ -117,6 +110,7 @@ def like_post(request):
             rate(post_id, request.user.username)
     return HttpResponse(likes)
 
+#updates the disliked field when the dislike button is pressed
 def dislike_post(request):
     post_id = None
     if request.method == 'GET':
@@ -127,6 +121,7 @@ def dislike_post(request):
     if post_id:
         post = Post.objects.get(id=int(post_id))
         ratings = Rating.objects.all()
+        #if the post has already been rated by the user dont allow them to rate it by returning without doing anything
         for rating in ratings:
             if rating.poster_id_rate == request.user.username and rating.post_id_rate== post_id:
                 return
@@ -149,14 +144,15 @@ def rate(post_id, poster_id):
 def get_tagged(request, tag):
 
     posts = Post.objects.all()
-    tagSet = set()#{Tag.objects.all()
+    #create a set containing all of the tags used
+    tagSet = set()
     for post in posts:
         tagSet.add(post.slug)
 
     form = PostForm()
-    print tag
     context_dict = {}
     posts = Post.objects.filter(slug = tag)[:8]
+
     context_dict['tagged_posts'] = posts
     context_dict['form'] = form
     context_dict['tagSet'] = tagSet
