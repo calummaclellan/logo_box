@@ -8,7 +8,6 @@ django-bootstrap-toolkit==2.15.0
 django-registration-redux==1.1
 feedparser==5.1.3
 formencode==1.2.2
-lxml==3.2.3
 mako==0.3.4
 markupsafe==0.15
 Pillow
